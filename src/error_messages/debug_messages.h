@@ -153,6 +153,7 @@
 #define FIM_HEALTHCHECK_THREAD_FINISHED     "(6256): Whodata health-check: Reading thread finished."
 #define FIM_HEALTHCHECK_CREATE_ERROR        "(6257): Whodata health-check: Failed to receive creation event."
 #define FIM_UNABLE_TO_READ_TEMP_FILE        "(6258): Detected error or EOF before processing all entries."
+#define FIM_REACHED_MAX_FPS                 "(6259): Maximum number of files readed per second reached, sleeping."
 
 
 #define FIM_HEALTHCHECK_SUCCESS             "(6261): Whodata health-check: Success."
