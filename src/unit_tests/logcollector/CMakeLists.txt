@@ -30,7 +30,11 @@ list(APPEND logcollector_flags "-Wl,--wrap,fopen -Wl,--wrap,fclose -Wl,--wrap,ff
                                 -Wl,--wrap,w_get_attr_val_by_name -Wl,--wrap,_mwarn")
 
 list(APPEND logcollector_names "test_logcollector")
-list(APPEND logcollector_flags "-Wl,--wrap,OSHash_Get_ex -Wl,--wrap,OSHash_Get_ex")
+list(APPEND logcollector_flags "-Wl,--wrap,OSHash_Add_ex -Wl,--wrap,OSHash_Add -Wl,--wrap,OSHash_Get_ex -Wl,--wrap,OSHash_Get \
+                                -Wl,--wrap,OSHash_Delete_ex -Wl,--wrap,OSHash_Create -Wl,--wrap,OSHash_Update_ex \
+                                -Wl,--wrap,OS_SHA1_Stream -Wl,--wrap,merror_exit -Wl,--wrap,OSHash_setSize -Wl,--wrap,OSHash_SetFreeDataPointer \
+                                -Wl,--wrap,fopen -Wl,--wrap,fclose -Wl,--wrap,fflush -Wl,--wrap,fgets -Wl,--wrap,fread -Wl,--wrap,fseek \
+                                -Wl,--wrap,fwrite -Wl,--wrap,remove")
 
 list(LENGTH logcollector_names count)
 math(EXPR count "${count} - 1")
