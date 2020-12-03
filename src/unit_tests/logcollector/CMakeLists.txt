@@ -1,9 +1,7 @@
 # Generate logcollector library
 file(GLOB logcollector_files
     ${SRC_FOLDER}/logcollector/*.o)
-
 add_library(LOGCOLLECTOR_O STATIC ${logcollector_files})
-
 set_source_files_properties(
     ${logcollector_files}
     PROPERTIES
@@ -31,6 +29,8 @@ list(APPEND logcollector_flags "-Wl,--wrap,fopen -Wl,--wrap,fclose -Wl,--wrap,ff
                                 -Wl,--wrap,fread -Wl,--wrap,fwrite -Wl,--wrap,remove -Wl,--wrap,fseek -Wl,--wrap=fgetc\
                                 -Wl,--wrap,w_get_attr_val_by_name -Wl,--wrap,_mwarn")
 
+list(APPEND logcollector_names "test_logcollector")
+list(APPEND logcollector_flags "-Wl,--wrap,OSHash_Get_ex -Wl,--wrap,OSHash_Get_ex")
 
 list(LENGTH logcollector_names count)
 math(EXPR count "${count} - 1")
