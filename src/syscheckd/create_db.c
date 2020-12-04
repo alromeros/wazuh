@@ -263,7 +263,9 @@ void fim_checker(char *path, fim_element *item, whodata_evt *w_evt, int report) 
         if (fim_check_restrict (path, syscheck.filerestrict[item->index]) == 1) {
             return;
         }
+
         check_max_fps(item->mode);
+
         if (fim_file(path, item, w_evt, report) < 0) {
             mwarn(FIM_WARN_SKIP_EVENT, path);
         }

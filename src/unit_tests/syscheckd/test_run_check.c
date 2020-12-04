@@ -198,15 +198,6 @@ static int teardown_group(void **state) {
     return 0;
 }
 
-#ifndef TEST_WINAGENT
-static int teardown_tmp_file(void **state) {
-    fim_tmp_file *tmp_file = *state;
-    free(tmp_file);
-
-    return 0;
-}
-#endif
-
 static int setup_max_fps(void **state) {
     syscheck.max_fps = 1;
     return 0;
