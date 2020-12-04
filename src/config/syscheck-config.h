@@ -310,7 +310,6 @@ typedef struct _config {
     pthread_mutex_t fim_entry_mutex;
     pthread_mutex_t fim_scan_mutex;
     pthread_mutex_t fim_realtime_mutex;
-    pthread_mutex_t fim_scheduled_max_fps;
 
     rtfim *realtime;
     fdb_t *database;

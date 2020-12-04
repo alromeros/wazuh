@@ -25,7 +25,11 @@
 #include "fim_db.h"
 
 #ifdef WAZUH_UNIT_TESTING
+unsigned int files_read = 0;
+time_t last_time = 0;
+
 #ifdef WIN32
+
 #include "unit_tests/wrappers/windows/errhandlingapi_wrappers.h"
 #include "unit_tests/wrappers/windows/processthreadsapi_wrappers.h"
 #include "unit_tests/wrappers/windows/synchapi_wrappers.h"
@@ -122,9 +126,11 @@ void fim_send_scan_info(fim_scan_event event) {
 }
 
 void check_max_fps(int mode) {
+#ifndef WAZUH_TESTING
     static unsigned int files_read = 0;
     static time_t last_time = 0;
-    time_t now ;
+#endif
+    time_t now;
     if (mode != FIM_SCHEDULED || syscheck.max_fps == 0) {
         return;
     }
@@ -134,10 +140,9 @@ void check_max_fps(int mode) {
         files_read = 0;
         last_time = now;
     }
-    //w_mutex_lock(&syscheck.fim_scheduled_max_fps);
+
     if (files_read < syscheck.max_fps) {
         files_read++;
-        //w_mutex_unlock(&syscheck.fim_scheduled_max_fps);
         return;
     }
 
