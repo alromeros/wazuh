@@ -124,11 +124,7 @@ if(NOT ${TARGET} STREQUAL "winagent")
                                      -Wl,--wrap,closeproc -Wl,--wrap,_mdebug2 -Wl,--wrap,get_user \
                                      -Wl,--wrap,get_group -Wl,--wrap,realpath -Wl,--wrap,readlink -Wl,--wrap,fread \
                                      -Wl,--wrap,fseek -Wl,--wrap,remove -Wl,--wrap,atexit -Wl,--wrap,getpid -Wl,--wrap,FOREVER \
-<<<<<<< HEAD
-                                     -Wl,--wrap=fgetc")
-=======
-                                     -Wl,--wrap,fgetpos")
->>>>>>> Added UT for logcollector
+                                     -Wl,--wrap,fgetpos -Wl,--wrap=fgetc")
 endif()
 
 set(SEECHANGES_BASE_FLAGS "-Wl,--wrap,_merror -Wl,--wrap,_mwarn -Wl,--wrap,lstat -Wl,--wrap,stat -Wl,--wrap,abspath \
@@ -137,11 +133,7 @@ set(SEECHANGES_BASE_FLAGS "-Wl,--wrap,_merror -Wl,--wrap,_mwarn -Wl,--wrap,lstat
                            -Wl,--wrap,w_uncompress_gzfile -Wl,--wrap,OS_MD5_File -Wl,--wrap,File_DateofChange \
                            -Wl,--wrap,rename -Wl,--wrap,system -Wl,--wrap,fseek -Wl,--wrap,remove,--wrap=fprintf \
                            -Wl,--wrap=fgets -Wl,--wrap,atexit -Wl,--wrap,getpid,--wrap=_mdebug2,--wrap=rmdir_ex,--wrap=rename_ex \
-<<<<<<< HEAD
-                           -Wl,--wrap,_minfo,--wrap=DirSize -Wl,--wrap=fgetc")
-=======
-                           -Wl,--wrap,_minfo,--wrap=DirSize -Wl,--wrap,fgetpos")
->>>>>>> Added UT for logcollector
+                           -Wl,--wrap,_minfo,--wrap=DirSize -Wl,--wrap,fgetpos -Wl,--wrap=fgetc")
 
 list(APPEND syscheckd_tests_names "test_seechanges")
 if(${TARGET} STREQUAL "agent")
@@ -276,7 +268,7 @@ if(${TARGET} STREQUAL "winagent")
                                            -Wl,--wrap=convert_windows_string,--wrap=OSHash_Get_ex,--wrap=FOREVER \
                                            -Wl,--wrap=fflush,--wrap=fread,--wrap=fseek,--wrap=fwrite,--wrap=fprintf \
                                            -Wl,--wrap=fgets -Wl,--wrap=wstr_split -Wl,--wrap=pthread_rwlock_wrlock \
-                                           -Wl,--wrap=fgetc")
+                                           -Wl,--wrap=fgetpos -Wl,--wrap=fgetc")
 endif()
 
 # Compiling tests
